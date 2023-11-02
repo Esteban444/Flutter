@@ -8,7 +8,20 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  int counter = 10;
+  int counter = 0;
+
+  void increase () {
+    counter ++;
+    setState(() {});
+  }
+  void decrese () {
+    counter --;
+    setState(() {});
+  }
+  void restart () {
+    counter  = 0;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +46,53 @@ class _CounterScreenState extends State<CounterScreen> {
             ] 
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          counter++;
-          setState(() {
-           //counter++;
-          });
-      },),
+      floatingActionButton:  FloatingActions(
+        increase: increase,
+        clean: restart,
+        decrement: decrese
+        ),
+    );
+  }
+}
+
+class FloatingActions extends StatelessWidget {
+
+  final Function increase;
+  final Function decrement;
+  final Function clean;
+
+  const FloatingActions({
+    super.key, required this.increase, 
+    required this.decrement, 
+    required this.clean,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children:  [
+
+        FloatingActionButton(
+          child: const Icon(Icons.add),
+          //onPressed: () => setState(() =>counter++)
+          onPressed: () => increase(),
+        ),
+
+        FloatingActionButton(
+          child: const Icon(Icons.clear),
+          //onPressed: () => setState(() =>counter = 0)
+          onPressed:  () {
+             clean();
+             }
+        ),
+
+        FloatingActionButton(
+          child: const Icon(Icons.minimize),
+          onPressed: () => decrement(),
+          //onPressed: () => setState(() =>counter--)
+          ),
+      ],
     );
   }
 }
