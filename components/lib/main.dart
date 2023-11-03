@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:components/router/app_routes.dart';
 
-import 'package:components/screens/listview_screen1.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,10 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Components',
-      home: ListViewScreen1()
+      //home: const ListViewScreen1(),
+      initialRoute: AppRoutes.initialroute,
+      routes: AppRoutes.routes,
+      onGenerateRoute: AppRoutes.onGeneratedRoute
     );
   }
 }

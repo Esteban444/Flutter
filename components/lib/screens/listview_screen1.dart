@@ -13,12 +13,14 @@ class ListViewScreen1 extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('ListView1'),
+        backgroundColor: Colors.indigo,
       ),
       body: ListView.separated(
         itemCount: persons.length,
         itemBuilder: (context, index) => ListTile(
           title: Text(persons[index]),
-          trailing: const Icon(Icons.arrow_forward_ios_outlined),
+          trailing: const Icon(Icons.arrow_forward_ios_outlined,color: Colors.indigo,),
+          onTap: () => {},
         ),
         separatorBuilder: (context, index) => const Divider(height: 20,color: Colors.white,),
         
