@@ -9,11 +9,10 @@ class ListViewScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 235, 234, 234),
+      //backgroundColor: const Color.fromARGB(255, 235, 234, 234),
       appBar: AppBar(
         centerTitle: true,
         title: const Text('ListView1'),
-        backgroundColor: Colors.indigo,
       ),
       body: ListView.separated(
         itemCount: persons.length,
